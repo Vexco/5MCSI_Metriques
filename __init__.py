@@ -32,11 +32,11 @@ def extract_commits():
     response = urlopen('https://api.github.com/repos/Vexco/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
-    # results = []
-    # for list_element in json_content.get('list', []):
-    #     commit_value = list_element.get('commit')
-    #     date_value = list_element.get('author', {}).get('date') # Conversion de Kelvin en °c 
-    #     results.append({'Commit': commit_value, 'Date': date_value})
+    results = []
+    for list_element in json_content:
+        commit_value = list_element.get('author')
+        # date_value = list_element.get('author', {}).get('date') # Conversion de Kelvin en °c 
+        results.append({'Author': commit_value)
     return jsonify(json_content)
   
 @app.route("/rapport/")
