@@ -26,6 +26,18 @@ def meteo():
         temp_day_value = list_element.get('main', {}).get('temp') - 273.15 # Conversion de Kelvin en °c 
         results.append({'Jour': dt_value, 'temp': temp_day_value})
     return jsonify(results=results)
+
+@app.route('/commits/')
+def extract_commits():
+    response = urlopen('https://api.github.com/repos/Vexco/5MCSI_Metriques/commits')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+    results = []
+    for list_element in json_content.get('list', []):
+        commit_value = list_element.get('commit')
+        date_value = list_element.get('author', {}).get('date') # Conversion de Kelvin en °c 
+        results.append({'Commit': commit_value, 'Date': date_value})
+    return jsonify(results=results)
   
 @app.route("/rapport/")
 def mongraphique():
@@ -34,6 +46,12 @@ def mongraphique():
 @app.route("/histogramme/")
 def monhistogramme():
     return render_template("histogramme.html")
+
+@app.route('/extract-minutes/<date_string>')
+def extract_minutes(date_string):
+        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = date_object.minute
+        return jsonify({'minutes': minutes})
   
 if __name__ == "__main__":
   app.run(debug=True)
