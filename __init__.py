@@ -36,7 +36,7 @@ def extract_commits():
     for list_element in json_content:
         commit_value = list_element.get('author')
         # date_value = list_element.get('author', {}).get('date') # Conversion de Kelvin en °c 
-        results.append({'Author': commit_value)
+        results.append({'Author': commit_value})
     return jsonify(json_content)
   
 @app.route("/rapport/")
