@@ -9,7 +9,6 @@ app = Flask(__name__)
                                                                                                                                        
 @app.route('/')
 def hello_world():
-    test = 1
     return render_template('hello.html')
   
 @app.route("/contact/")
