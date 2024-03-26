@@ -33,9 +33,9 @@ def extract_commits():
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
-    for list_element in json_content:
-        commit_value = list_element.get('author', {}).get('commit', {}).get('author', {}).get('email')
-        date_value = list_element.get('author', {}).get('commit', {}).get('author', {}).get('date')
+    for list_element in json_content.get('author', []):
+        commit_value = list_element.get('commit', {}).get('author', {}).get('email')
+        date_value = list_element.get('commit', {}).get('author', {}).get('date')
         results.append({'Author': commit_value, 'Date':date_value})
     return jsonify(results=results)
   
