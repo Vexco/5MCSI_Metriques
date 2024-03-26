@@ -14,6 +14,7 @@
     function drawChart(data) {
     // Convertir les données récupérées en un tableau utilisable par Google Charts
     var histogramme = new google.visualization.DataTable();
+    histogramme.addColumn('string', 'Date');
     histogramme.addColumn('number', 'Valeur');
     data.results.forEach(entry => {
       var date = new Date(entry.Jour * 1000);
@@ -24,7 +25,7 @@
       title: 'Évolution des températures de la ville de Tawarano',
       legend: { position: 'bottom' },
       histogram: { bucketSize: 1 },
-      hAxis: { title: 'Value' },
+      hAxis: { title: 'Valeur' },
       vAxis: { title: 'Jour' }
     };
     var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
