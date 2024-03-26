@@ -11,7 +11,8 @@ body {
     flex-flow: wrap row;
     border-radius: 5px;
     border: 1px solid;
-    box-shadow: 2px black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    justify-content: center;
 }
 
 .card-row {
