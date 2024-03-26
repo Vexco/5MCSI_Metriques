@@ -1,0 +1,19 @@
+body {
+    margin: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    height: 50%;
+    width: 50%;
+    flex-flow: wrap row;
+    border-radius: 5px;
+    border: 1px solid;
+    box-shadow: 2px black;
+}
+
+.card-row {
+    width: 100%;
+}
