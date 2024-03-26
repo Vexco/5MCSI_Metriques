@@ -15,9 +15,10 @@
     // Convertir les données récupérées en un tableau utilisable par Google Charts
     var dataTable = new google.visualization.DataTable();
     dataTable.addColumn('string', 'Date');
+    dataTable.addColumn('string', 'Email');
     data.results.forEach(entry => {
-      var date = new Date([entry.date]);
-      dataTable.addRow(date);
+      var date = new Date(entry.date);
+      dataTable.addRow([date.toLocaleDateString(), entry.email]);
     });
     // Configurer les options du graphique en ligne
     var options = {

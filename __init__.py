@@ -27,21 +27,22 @@ def meteo():
         results.append({'Jour': dt_value, 'temp': temp_day_value})
     return jsonify(results=results)
 
-@app.route('/extract_commits/')
+@app.route('/commits/')
 def extract_commits():
     response = urlopen('https://api.github.com/repos/Vexco/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
     for list_element in json_content:
-        value = list_element.get('commit', {}).get('author', {}).get('date')
-        results.append({'date:': value})
+        value_date = list_element.get('commit', {}).get('author', {}).get('date')
+        value_email = list_element.get('commit', {}).get('author', {}).get('email')
+        results.append({'date:': value_date, 'email': value_email})
         # commit_value = list_element.get('commit', {}).get('author', {}).get('email')
     #     date_value = list_element.get('commit', {}).get('author', {}).get('date')
     #     results.append({'Author': commit_value, 'Date':date_value})
     return jsonify(results=results)
 
-@app.route("/commits/")
+@app.route("/extract_commits/")
 def myCommits():
     return render_template("commits.html")
   
