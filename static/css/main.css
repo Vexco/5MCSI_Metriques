@@ -2,12 +2,18 @@ body {
     margin: 5;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
     display: flex;
-    height: 50%;
-    width: 50%;
     flex-flow: wrap row;
     border-radius: 5px;
     border: 1px solid;
@@ -24,6 +30,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 5px;
 }
 
 .card-col {
@@ -34,6 +41,10 @@ body {
 
 input[type="button"] {
     padding: 5px;
-    margin: 5px;
     display: flex;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
 }
