@@ -34,10 +34,10 @@ def extract_commits():
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
     for list_element in json_content:
-        commit_value = list_element.get('author')
-        # date_value = list_element.get('author', {}).get('date') # Conversion de Kelvin en °c 
-        results.append({'Author': commit_value})
-    return jsonify(json_content)
+        commit_value = list_element.get('author', {}).get('commit', {}).get('author', {}).get('email')
+        date_value = list_element.get('author', {}).get('commit', {}).get('author', {}).get('date')
+        results.append({'Author': commit_value, 'Date':date_value})
+    return jsonify(results=results)
   
 @app.route("/rapport/")
 def mongraphique():
